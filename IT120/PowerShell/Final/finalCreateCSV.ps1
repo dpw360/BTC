@@ -1,9 +1,9 @@
 # Goal Output
 # "Password","First","Last","Userid","FullName"
 New-Item -Path '.\Final.csv' -ItemType File
-Add-Content -Path '.\Final.csv' -Value "Password First Last Userid FullName"
+Add-Content -Path '.\Final.csv' -Value "Password, First, Last, Userid, FullName"
 
-foreach ($line in Get-Content -Path .\Final.txt) {
+foreach ($line in Get-Content -Path '.\Final.txt') {
     $items = $line -split ' '
 
     $password = $items[0] + "-000"
