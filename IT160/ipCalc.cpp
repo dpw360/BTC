@@ -108,11 +108,13 @@ int main() {
             }
         }
 
+        // Checks if the address is valid.
         if (invalidFlag) {
             cout << "This address is invalid!" << endl;
             continue;
         }
 
+        // Initiates all the variables for the address components and displays.
         string networkClass, mask, netwkID, hostMin, hostMax, broadcast;
         networkClass = getClass(address);
         mask = getMask(networkClass);
