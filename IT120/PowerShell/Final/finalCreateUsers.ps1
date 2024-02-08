@@ -7,5 +7,5 @@ $csvData = Import-Csv -Path '.\Final.csv'
 ## attributes. All users are described as "test accounts".
 foreach ($row in $csvData) {
     $securePassword = ConvertTo-SecureString $row.Password -AsPlainText -Force
-    New-LocalUser -Name $row.userID -FullName $row.FullName -Password $securePassword -Description "test account" -WhatIf
+    New-LocalUser -Name $row.userID -FullName $row.FullName -Password $securePassword -Description "test account"
 }
