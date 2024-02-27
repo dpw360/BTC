@@ -14,7 +14,7 @@ New-Item -Path 'C:\Users\Drew\Documents\dll.csv' -ItemType File
 ## This for loop iterates through the last 100 elements of the $list, stores
 ## the name and last write time as variables, and appends the dll.csv file
 ## with that information formatted correctly.
-for ($i = $numFiles - 1; $i -gt $numFiles - 100; $i--) {
+for ($i = $numFiles - 1; $i -ge $numFiles - 100; $i--) {
     $dllName = $list[$i].Name
     $dllModified = $list[$i].LastWriteTime
     Add-Content -Path 'C:\Users\Drew\Documents\dll.csv' -Value "$dllName, $dllModified"
