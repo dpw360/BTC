@@ -7,7 +7,7 @@ for ($i = 0; $i -lt 1000; $i++) {
 
 ## If 42 is in the array, we can say so and exit.
 if (42 -in $randArray) {
-    Write-Host "The answer to life the universe and everything is found"
+    Write-Host "The answer to life the universe and everything is found" -ForegroundColor Green
 ## Else, we check if the user dadams exists, and store that bool value in a var.
 } else {
     $userExists = (Get-LocalUser).Name -Contains "dadams"
@@ -15,7 +15,7 @@ if (42 -in $randArray) {
     ## If it does exist, we delete the user and print a messgae.
     if ($userExists) {
         Remove-LocalUser -Name "dadams"
-        Write-Host "So long and thanks for all the fish!"
+        Write-Host "So long and thanks for all the fish!" -ForegroundColor Red
     ## If it doesn't, we create the user, specifying the username, full name,
     ## and that no password is required.
     } else {
