@@ -1,0 +1,37 @@
+Creating Your Network Notes
+
+\\beltec\software
+Windows Server VM
+Skip unattended
+8192 MB / 4 Core / 50 GB hard drive
+Bridged Adapter to USB adapter
+
+Once booted:
+Install Windows Server 2022 Standard Desktop
+Custom Install
+Whole harddrive
+Install guest additions
+
+Recommend figuring out names and IP's before starting
+
+Set IP information and domain info, will need restartadmin
+
+click add roles and features
+
+Under tools, it can be configured
+
+############
+  PLANNING
+############
+TESS #1
+Router 10.255.255.1
+Ethernet Adapter 10.255.255.3
+
+SKYLAR #2
+DNS 10.255.255.35 namegiver
+SERV 10.255.255.79
+Ethernet Adapter 10.255.255.81
+
+DREW #3
+DHCP SERV 10.255.255.37
+Ethernet Adapter 10.255.255.95
