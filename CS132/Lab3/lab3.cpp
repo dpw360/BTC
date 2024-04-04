@@ -86,14 +86,14 @@ Food::Food(string name, int calories, vector<string> flavors) {
 
 // Returns the calories variable for the given object.
 int Food::getCalorieCount() {
-    return calories;
+    return this->calories;
 }
 
 // Loops through the vector of flavors for the given object and returns
 // true if the given flavor is present. If it finishes the loop without
 // finding the flavor, it returns false.
 bool Food::hasFlavor(string flavorSearch) {
-    for (string flavor : flavors) {
+    for (string flavor : this->flavors) {
         if (flavor == flavorSearch) {
             return true;
         }
@@ -117,17 +117,17 @@ Recipe::Recipe(string name, int servings, vector<recipeIngredient> ingredients) 
 // calories per serving.
 int Recipe::getCaloriesPerServing() {
     int totalCalories = 0;
-    for (recipeIngredient ingredient : ingredients) {
+    for (recipeIngredient ingredient : this->ingredients) {
         totalCalories += (ingredient.f.getCalorieCount() * ingredient.amtNeeded);
     }
 
-    return totalCalories / servings;
+    return totalCalories / this->servings;
 }
 
 // Prints out the recipe.
 void Recipe::printRecipe() {
-    cout << "\"" << name << "\"\n";
-    cout << "Serves " << servings << endl;
+    cout << "\"" << this->name << "\"\n";
+    cout << "Serves " << this->servings << endl;
 
     for (recipeIngredient ingredient : ingredients) {
         cout << ingredient.amtNeeded << " unit(s) of " << ingredient.f.name << " (" << ingredient.f.getCalorieCount() << ")\n"; 
