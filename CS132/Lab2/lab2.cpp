@@ -1,13 +1,3 @@
-// 1. Implement the constructor and both public methods for the Food class.
-//    getCalorieCount is a simple accessor. hasFlavor should search through
-//    the vector of flavors and return true if the input flavor is found, false 
-//    if it is not.
-// 2. In main, construct 4 Food items of your choice.
-// 3. Add those Food items to a collection, either array or vector.
-// 4. Build a loop that prompts the user for a flavor. Within that loop check 
-//    each food item to see if it has that flavor. If it does, print out the Food
-//    item's name and calorie count.
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -15,16 +5,21 @@ using namespace std;
 
 class Food {
     public:
-        Food(string name, int calories, vector<string> flavors) {
-            name = name;
-            calories = calories;
-            flavors = flavors;
+        // Constructor
+        Food(string nameNew, int caloriesNew, vector<string> flavorsNew) {
+            name = nameNew;
+            calories = caloriesNew;
+            flavors = flavorsNew;
         }
         
+        // Returns the calories variable for the given object.
         int getCalorieCount() {
             return calories;
         }
 
+        // Loops through the vector of flavors for the given object and returns
+        // true if the given flavor is present. If it finishes the loop without
+        // finding the flavor, it returns false.
         bool hasFlavor(string flavorSearch) {
             for (string flavor : flavors) {
                 if (flavor == flavorSearch) {
@@ -35,15 +30,42 @@ class Food {
             return false;
         }
 
+        // Public attribute for name
         string name;
 
     private:
+        // Private attributes for calories and the flavors of food.
         int calories;
         vector<string> flavors;
 };
 
 int main() {
+    // Create four food items.
     vector<string> pizzaFlavors {"sweet", "cheesy", "spicy"};
-    Food f1("Pizza", 200, pizzaFlavors);
+    Food f1("Pizza", 600, pizzaFlavors);
+    vector<string> teriyakiFlavors {"sweet", "savory", "smoky"};
+    Food f2("Teriyaki", 350, teriyakiFlavors);
+    vector<string> ramenFlavors {"umami", "savory", "salty"};
+    Food f3("Ramen", 200, ramenFlavors);
+    vector<string> burgerFlavors {"meaty", "cheesy", "greasy"};
+    Food f4("Burger", 400, burgerFlavors);
+
+    // Add the four food items to a vector.
+    vector<Food> foodVect {f1, f2, f3, f4};
+    
+    // Prompt for and store a flavor to be searched for.
+    string searchFlavor;
+    cout << "Please enter a flavor that you would like to search for: ";
+    cin >> searchFlavor;
+
+    // I loop through the food objects in the vector, and use the Food object's
+    // public hasFlavor method to determine if that object has the given flavor.
+    // If it does, I display the info.
+    for (Food x : foodVect) {
+        if (x.hasFlavor(searchFlavor)) {
+            cout << x.name << " is " << x.getCalorieCount() << " calories and has the " << searchFlavor << " flavor!\n";
+        }
+    }
+
     return 0;
 }
