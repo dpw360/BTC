@@ -6,15 +6,11 @@ using namespace std;
 // A class for food items.
 class Food {
     public:
-        // Constructor.
+        // Constructor
         Food(string name, int calories, vector<string> flavors);
-        
-        // Returns the calories variable for the given object.
+        //Methods
         int getCalorieCount();
-
-        // Returns if the Food object has the specified flavor.
         bool hasFlavor(string flavorSearch);
-
         // Public attribute for name.
         string name;
 
@@ -35,13 +31,9 @@ class Recipe {
     public:
         // Constructor.
         Recipe(string name, int servings, vector<recipeIngredient> ingredients);
-
-        // Returns how many calories per serving.
+        // Methods
         int getCaloriesPerServing();
-
-        // Prints out the recipe.
         void printRecipe();
-
         // Public attribute for name.
         string name;
 
