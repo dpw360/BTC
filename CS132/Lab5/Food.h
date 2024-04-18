@@ -11,6 +11,7 @@ namespace food {
             //Methods
             int getCalorieCount();
             bool hasFlavor(string flavorSearch);
+            Food operator+(Food f);
             // Public attribute for name.
             string name;
 

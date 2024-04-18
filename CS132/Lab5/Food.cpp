@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Food.h"
 using namespace std;
 using namespace food;
@@ -29,4 +30,16 @@ bool Food::hasFlavor(string flavorSearch) {
     }
 
     return false;
+}
+
+// Overloads the + operator to create a new Food object from two Food objects.
+Food Food::operator+(Food f) {
+    string newName = this->name + " & " + f.name;
+    int newCal = this->calories + f.calories;
+
+    vector<string> newFlavors = this->flavors;
+    newFlavors.insert(newFlavors.end(), f.flavors.begin(), f.flavors.end());
+
+    Food newFood(newName, newCal, newFlavors);
+    return newFood;
 }
