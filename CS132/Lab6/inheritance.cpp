@@ -5,8 +5,8 @@ using namespace std;
 
 class Character {
     protected:
-        virtual void print() {};
-        virtual string getSecretIdentity() {return "";};
+        virtual void print() = 0;
+        virtual string getSecretIdentity() = 0;
 };
 
 class Person {
@@ -29,12 +29,12 @@ class Hero : public Character, public Person {
         }
 
         void print() {
-            printf("Real Name: %s \nJob: %s \nHero Name: %s \n", this->getSecretIdentity(), this->jobTitle, this->name);
+            printf("Real Name: %s \nJob: %s \nHero Name: %s \n", this->getSecretIdentity().c_str(), this->jobTitle.c_str(), this->name.c_str());
             cout << "They have these super powers:\n";
             for (string power : superPowers) {
-                cout << power << endl;
+                cout << "    " << power << endl;
             }
-            printf("They are weak to %s", this->weakness);
+            printf("They are weak to %s", this->weakness.c_str());
         }
 
         string getSecretIdentity() {
