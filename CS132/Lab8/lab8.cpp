@@ -146,6 +146,12 @@ void Linkedlist::deleteNode(int nodeOffset) {
     // of the previous node.
     temp2->next = temp1->next;
 
+    // UPDATE //
+    // The way the traversal is setup now is temp2->next is pointing towards
+    // the correct node, but temp2->next also needs to point backwards to the
+    // correct node, which is temp2.
+    temp2->next->prev = temp2;
+
     // Delete the node
     delete temp1;
 }
