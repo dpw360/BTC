@@ -12,6 +12,7 @@ public:
     int data;
     Node* next;
     // UPDATE //
+    // This makes thid Node class capable of being used in a doubly-linked list
     Node* prev;
 
     // Default constructor
@@ -38,6 +39,8 @@ public:
 class Linkedlist {
     Node* head;
     // UPDATE //
+    // We can track the end of the list now as well, and traverse
+    // backwards from it if need be.
     Node* tail;
 
 public:
@@ -140,7 +143,6 @@ void Linkedlist::deleteNode(int nodeOffset) {
     // value as NULL, and update the tail value.
     if (nodeOffset == ListLen) {
         Node* newTail = tail->prev;
-        std::cout << tail->data << std::endl; 
         delete tail;
         newTail->next = NULL;
         tail = newTail;
