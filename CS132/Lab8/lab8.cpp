@@ -84,9 +84,11 @@ void Linkedlist::insertNode(int data) {
     tail = temp;
 
     // UPDATE //
-    // Insert at the last position and give it a prev value of the tail.
+    // Insert at the last position, give it a prev value of the old tail, and
+    // update tail to be the newly inserted node.
     tail->next = newNode;
     newNode->prev = tail;
+    tail = newNode;
 }
 
 // Function to delete the
@@ -119,7 +121,7 @@ void Linkedlist::deleteNode(int nodeOffset) {
     // Declare temp1 to head
     temp1 = head;
 
-    // Deleting the head.
+    // If we are deleting the head:
     if (nodeOffset == 1) {
 
         // Update head
@@ -128,6 +130,20 @@ void Linkedlist::deleteNode(int nodeOffset) {
         // When we delete the head, we have to set the new head's prev to null.
         head->prev = NULL;
         delete temp1;
+        return;
+    }
+
+    // UPDATE //
+    // If we are deleting the tail
+    // We create a pointer for the node that will become the new tail, and
+    // assign it. we then delete the old tail, set the new tail's next
+    // value as NULL, and update the tail value.
+    if (nodeOffset == ListLen) {
+        Node* newTail = tail->prev;
+        std::cout << tail->data << std::endl; 
+        delete tail;
+        newTail->next = NULL;
+        tail = newTail;
         return;
     }
 
