@@ -12,6 +12,7 @@ public:
     int data;
     Node* next;
     // UPDATE //
+    // This makes thid Node class capable of being used in a doubly-linked list
     Node* prev;
 
     // Default constructor
@@ -38,6 +39,8 @@ public:
 class Linkedlist {
     Node* head;
     // UPDATE //
+    // We can track the end of the list now as well, and traverse
+    // backwards from it if need be.
     Node* tail;
 
 public:
@@ -58,8 +61,12 @@ public:
     void printList();
 
     // Function to delete the
-    // node at given position
+    // node at given position.
     void deleteNode(int);
+
+    // Function to print the
+    // linked list backwards.
+    void printListBackwards();
 };
 
 // Function to insert a new node.
@@ -84,9 +91,11 @@ void Linkedlist::insertNode(int data) {
     tail = temp;
 
     // UPDATE //
-    // Insert at the last position and give it a prev value of the tail.
+    // Insert at the last position, give it a prev value of the old tail, and
+    // update tail to be the newly inserted node.
     tail->next = newNode;
     newNode->prev = tail;
+    tail = newNode;
 }
 
 // Function to delete the
@@ -119,7 +128,7 @@ void Linkedlist::deleteNode(int nodeOffset) {
     // Declare temp1 to head
     temp1 = head;
 
-    // Deleting the head.
+    // If we are deleting the head:
     if (nodeOffset == 1) {
 
         // Update head
@@ -128,6 +137,19 @@ void Linkedlist::deleteNode(int nodeOffset) {
         // When we delete the head, we have to set the new head's prev to null.
         head->prev = NULL;
         delete temp1;
+        return;
+    }
+
+    // UPDATE //
+    // If we are deleting the tail
+    // We create a pointer for the node that will become the new tail, and
+    // assign it. we then delete the old tail, set the new tail's next
+    // value as NULL, and update the tail value.
+    if (nodeOffset == ListLen) {
+        Node* newTail = tail->prev;
+        delete tail;
+        newTail->next = NULL;
+        tail = newTail;
         return;
     }
 
@@ -174,6 +196,25 @@ void Linkedlist::printList() {
     }
 }
 
+// This function prints the list backwards, starting from the tail. First, I
+// create a temp node that I will use to traverse the list with. I then check
+// if the list is empty, and if it is, print that and return out of the function.
+// Otherwise, I can traverse the list from the tail, same as we do going
+// forwards, just by using the prev value node instead of the next node.
+void Linkedlist::printListBackwards() {
+    Node* tmp = tail;
+
+    if (head == NULL) {
+        std::cout << "List empty" << std::endl;
+        return;
+    }
+
+    while (tmp != NULL) {
+        std::cout << tmp->data << std::endl;
+        tmp = tmp->prev;
+    }
+}
+
 // Driver Code
 int main() {
     Linkedlist list;
@@ -196,5 +237,10 @@ int main() {
     std::cout << "Elements of the list are: " << std::endl;
     list.printList();
     std::cout << std::endl;
+
+    std::cout << "Now let's do it backwards!" << std::endl;
+    list.printListBackwards();
+    std::cout << std::endl;
+
     return 0;
 }
