@@ -1,0 +1,12 @@
+My first day of internship! Today we jumped straight in after getting settled into my desk and meeting the crew. 
+
+I learned the processes for wiping a computer's storage drive and preparing it to be donated, as well as how to image
+new computers with the OS that's required. We use a PXE boot setup, so it was fun to see that tech being used in the
+real world! I also shadowed on some helpdesk ticket visits: I can't have full access to the helpdesk due to security
+restrictions, but I'm able to tag along to help research and implement fixes. Most visits were hardware related:
+getting a monitor to seat properly, setting up a new headset, etc, but there were some software issues as well. We
+discovered a way to get Win11 to display the old right-click context menu in File Explorer by editing the registry,
+and dealt with some graphical scaling issues as well.
+
+Disks Killed: 5 (5 total)
+Computers Imaged: 1 (1 total)
