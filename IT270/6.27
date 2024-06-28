@@ -1,0 +1,9 @@
+Another day of settling in! There weren't any computers to kill disk, and only one to image, so most of my day was helping to troubleshoot helpdesk tickets. 
+
+One involved a user that was trying to reset their password, selected one that met the criteria, and wouldn't be accepted. We ended up tabling that to look
+into another day, and implemented a quick fix by manually resetting her password. Another ticket involved troubleshooting group policy permissions to allow
+a user to save documents into a folder. Multiple groups needed their permissions modified, and finding the right combination to allow the correct things
+took quite a bit of problem solving!
+
+Killed Disks: 0
+Computers Imaged: 1 (2 total)
