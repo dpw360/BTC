@@ -14,48 +14,67 @@ void setup() {
   pinMode(BUTTON_PIN, INPUT);
 }
 
+// INPUT: An int that represents which song to play
+// OUTPUT: VOID
+// METHOD: At the start of the function call, it turns on the LED. We then
+//         use the songID to check which song to play. If it's an odd number,
+//         we play the first song, otherwise we play the second song. After it
+//         has played, we turn the LED back off.
 void playSong(int songID) {
   digitalWrite(LED, HIGH);
 
   if (songID % 2 == 1) {
-    int melody[] = {N_B7,N_D6,N_GS6,N_A7,N_D6,N_E6,N_GS6,N_A6,N_B7,N_C7,N_B7,N_E6};  // notes in the melody
-    int noteDurations[] = {6,6,6,6,6,6,6,6,6,6,6,6};               // note durations
+    // Notes in the melody, and how long to play each note for
+    int melody[] = {N_B7,N_D6,N_GS6,N_A7,N_D6,N_E6,N_GS6,N_A6,N_B7,N_C7,N_B7,N_E6};
+    int noteDurations[] = {6,6,6,6,6,6,6,6,6,6,6,6};
 
-    for (int thisNote = 0; thisNote < 12; thisNote++) {      // ergodic all notes
-      int noteDuration = 1000/noteDurations[thisNote];      // calculate the note duration
-      tone(BUZZER, melody[thisNote], noteDuration);         // let speaker sonds
-      int pauseBetweenNotes = noteDuration * 1.30;          // set a minimum time between notes
-      delay(pauseBetweenNotes);                             // delay for the while
-      noTone(BUZZER);                                       // stop the tone playing:
+    // Code to play the melody, copied in from assignment
+    for (int thisNote = 0; thisNote < sizeof(melody); thisNote++) {
+      int noteDuration = 1000/noteDurations[thisNote];
+      tone(BUZZER, melody[thisNote], noteDuration);
+      int pauseBetweenNotes = noteDuration * 1.30;
+      delay(pauseBetweenNotes);
+      noTone(BUZZER);
     }
   } else {
-    int melody[] = {1900,2000,2000,2443,2500,0,2000,1900};  // notes in the melody
-    int noteDurations[] = {4,8,8,4,4,4,4,4 };               // note durations
+    // Notes in the melody, and how long to play each note for
+    int melody[] = {N_CS6,N_E6,N_GS6,N_CS6,N_E6,N_CS7,N_CS6,N_E6,N_GS6,N_CS6,N_E6,N_CS7,N_CS6,N_E6,N_GS6,N_CS6,};
+    int noteDurations[] = {4,4,4,4,4,4,4,4,4,4,4,4};
 
-    for (int thisNote = 0; thisNote < 8; thisNote++) {      // ergodic all notes
-      int noteDuration = 1000/noteDurations[thisNote];      // calculate the note duration
-      tone(BUZZER, melody[thisNote], noteDuration);         // let speaker sonds
-      int pauseBetweenNotes = noteDuration * 1.30;          // set a minimum time between notes
-      delay(pauseBetweenNotes);                             // delay for the while
-      noTone(BUZZER);  
+    // Code to play the melody, copied in from assignment
+    for (int thisNote = 0; thisNote < sizeof(melody); thisNote++) {
+      int noteDuration = 1000/noteDurations[thisNote];
+      tone(BUZZER, melody[thisNote], noteDuration);
+      int pauseBetweenNotes = noteDuration * 1.30;
+      delay(pauseBetweenNotes);
+      noTone(BUZZER);
     }
   }
 
   digitalWrite(LED, LOW);  
 }
 
+// A global variable to check if the button has been clicked. This will reset
+// each time the main loop runs.
 bool clicked;
+// A global variable to keep track of how many times the button has been
+// pressed in total. Will not be reset, only incremented.
 int songID = 0;
 
 void loop() {
+  // Set the clicked var to false, then update the button to check for click
   clicked = false;
   BUTTON.Update();
   
+  // If the button was clicked one or more times, set clicked to true, and
+  // increment the songID variable.
   if (BUTTON.clicks != 0) {
     clicked = true;
     songID++;
   }
 
+  // If the button was clicked, we play the song, passing the method the songID
+  // variable.
   if (clicked) {
     playSong(songID);
   }
