@@ -39,7 +39,7 @@ void playSong(int songID) {
   } else {
     // Notes in the melody, and how long to play each note for
     int melody[] = {N_CS6,N_E6,N_GS6,N_CS6,N_E6,N_CS7,N_CS6,N_E6,N_GS6,N_CS6,N_E6,N_CS7,N_CS6,N_E6,N_GS6,N_CS6,};
-    int noteDurations[] = {4,4,4,4,4,4,4,4,4,4,4,4};
+    int noteDurations[] = {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};
 
     // Code to play the melody, copied in from assignment
     for (int thisNote = 0; thisNote < sizeof(melody); thisNote++) {
