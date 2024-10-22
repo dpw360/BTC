@@ -1,13 +1,16 @@
+// Include the clickButton library, as well as the musicNotes file.
 #include <clickButton.h>
 #include "Particle.h"
 #include "musicNotes.cpp"
+// Defines the correct pins.
 #define BUZZER D1
 #define LED D2
 #define BUTTON_PIN D3
 
+// Create the ClickButton object.
 ClickButton BUTTON(BUTTON_PIN, LOW, CLICKBTN_PULLUP);
 
-
+// Set up the pin modes for each pin.
 void setup() {
   pinMode(BUZZER, OUTPUT);
   pinMode(LED, OUTPUT);
@@ -61,6 +64,7 @@ bool clicked;
 // pressed in total. Will not be reset, only incremented.
 int songID = 0;
 
+// MAIN LOOP //
 void loop() {
   // Set the clicked var to false, then update the button to check for click
   clicked = false;
