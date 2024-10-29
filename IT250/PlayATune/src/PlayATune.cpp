@@ -28,11 +28,11 @@ void playSong(int songID) {
 
   if (songID % 2 == 1) {
     // Notes in the melody, and how long to play each note for
-    int melody[] = {N_B7,N_D6,N_GS6,N_A7,N_D6,N_E6,N_GS6,N_A6,N_B7,N_C7,N_B7,N_E6};
-    int noteDurations[] = {6,6,6,6,6,6,6,6,6,6,6,6};
+    int melody[] = {N_B5,N_D5,N_GS5,N_A5,N_D5,N_E5,N_GS5,N_A5,N_B4,N_C5,N_B5,N_E5,N_B5,N_D5,N_GS5,N_A5,N_D5,N_E5,N_GS5,N_A5,N_B4,N_C5,N_B5,N_E5};
+    int noteDurations[] = {6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6};
 
     // Code to play the melody, copied in from assignment
-    for (int thisNote = 0; thisNote < sizeof(melody); thisNote++) {
+    for (int thisNote = 0; thisNote < 24; thisNote++) {
       int noteDuration = 1000/noteDurations[thisNote];
       tone(BUZZER, melody[thisNote], noteDuration);
       int pauseBetweenNotes = noteDuration * 1.30;
@@ -41,12 +41,12 @@ void playSong(int songID) {
     }
   } else {
     // Notes in the melody, and how long to play each note for
-    int melody[] = {N_CS6,N_E6,N_GS6,N_CS6,N_E6,N_CS7,N_CS6,N_E6,N_GS6,N_CS6,N_E6,N_CS7,N_CS6,N_E6,N_GS6,N_CS6,};
-    int noteDurations[] = {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};
+    int melody[] = {N_CS5,N_E5,N_GS5,N_CS5,N_E5,N_CS6,N_CS5,N_E5,N_GS5,N_CS5,N_E5,N_CS6,N_CS5,N_E5,N_GS5,N_CS5,N_E5,N_GS5,N_C6,N_E5,N_GS5,N_E6,N_E5,N_GS5,N_C6,N_E5,N_GS5,N_E6,N_E5,N_GS5,N_C6,N_E5,N_DS5,N_FS5,N_A6,N_DS5,N_FS5,N_DS6,N_DS5,N_FS5,N_A6,N_DS5,N_FS5,N_DS6,N_DS5,N_FS5,N_A6,N_FS5,N_GS5,N_C6,N_DS6,N_A6,N_DS6,N_C6,N_DS6,N_A6,N_FS6,N_CS7,N_C7,N_GS6,N_A6,N_C6,N_DS6,N_FS6};
+    int noteDurations[] = {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};
 
     // Code to play the melody, copied in from assignment
-    for (int thisNote = 0; thisNote < sizeof(melody); thisNote++) {
-      int noteDuration = 1000/noteDurations[thisNote];
+    for (int thisNote = 0; thisNote < 64; thisNote++) {
+      int noteDuration = 900/noteDurations[thisNote];
       tone(BUZZER, melody[thisNote], noteDuration);
       int pauseBetweenNotes = noteDuration * 1.30;
       delay(pauseBetweenNotes);
@@ -66,6 +66,7 @@ int songID = 0;
 
 // MAIN LOOP //
 void loop() {
+  digitalWrite(LED, LOW);
   // Set the clicked var to false, then update the button to check for click
   clicked = false;
   BUTTON.Update();
