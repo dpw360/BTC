@@ -14,12 +14,12 @@ void setup() {
   pinMode(BUZZER, OUTPUT);
 }
 
-// INPUT: A string that represents which song to play
+// INPUT: A string that represents which song to play.
 // OUTPUT: VOID
 // METHOD: We convert the string to an integer, and then use that integer to
-//         to check which song to play. If it's an odd number,
-//         we play the first song, otherwise we play the second song. After it
-//         has played, we turn the LED back off.
+//         to check which song to play. If it doesn't receive a valid number,
+//         it will default to zero, it will return out. At the end, it will
+//         return a success.
 int playSong(String songID_str) {
   int songID_int = 0;
   
@@ -28,10 +28,6 @@ int playSong(String songID_str) {
   } else if (songID_str == "two" || songID_str == "Two" || songID_str == "TWO") {
     songID_int = 2;
   } else {
-    songID_int = 0;
-  }
-  
-  if (songID_int == 0) {
     return 1;
   }
 
