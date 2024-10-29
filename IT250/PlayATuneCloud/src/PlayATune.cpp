@@ -23,9 +23,9 @@ void setup() {
 int playSong(String songID_str) {
   int songID_int = 0;
   
-  if (songID_str == "one" || songID_str == "One" || songID_str == "ONE") {
+  if (songID_str == "one" || songID_str == "One" || songID_str == "ONE" || songID_str == "1") {
     songID_int = 1;
-  } else if (songID_str == "two" || songID_str == "Two" || songID_str == "TWO") {
+  } else if (songID_str == "two" || songID_str == "Two" || songID_str == "TWO" || songID_str == "2") {
     songID_int = 2;
   } else {
     return 1;
